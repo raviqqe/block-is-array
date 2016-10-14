@@ -3,7 +3,7 @@ require_relative 'compiler'
 
 class NginxConf
   def initialize hash
-    raise if hash.has_key?(:http)
+    raise if [:http, :load_module].any? { |k| hash.has_key? k }
     @hash = hash.merge({load_module: [], http: {server: []}})
   end
 
