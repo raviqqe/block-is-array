@@ -1,0 +1,15 @@
+sudo: required
+
+language: ruby
+
+addons:
+  apt:
+    packages:
+      - nginx
+      - rubygems
+
+script:
+  - gem build *.gemspec
+  - sudo gem install *.gem
+  - ruby examples/complex.rb > nginx.conf
+  - sudo nginx -c nginx.conf
