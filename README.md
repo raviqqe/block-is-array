@@ -28,11 +28,11 @@ user www;
 http {
     server {
         listen 80;
-        server_name: foo.com;
+        server_name foo.com;
     }
     server {
         listen 443 ssl;
-        server_name: bar.com;
+        server_name bar.com;
     }
 }
 ```
