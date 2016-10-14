@@ -1,7 +1,7 @@
 require_relative 'compiler'
 
 
-class Conf
+class NginxConf
   def initialize hash
     raise unless !hash.has_key?(:http)
     @hash = hash.merge({http: {servers: []}})
