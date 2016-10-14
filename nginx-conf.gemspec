@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'nginx-conf'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = Date.today.to_s
   s.license     = 'Unlicense'
 
