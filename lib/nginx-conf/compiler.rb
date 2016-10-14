@@ -41,6 +41,8 @@ class Compiler
   end
 
   def compile_hash_item key, values
+    values = [values] if not values.is_a? Array
+
     indent(key.to_s + ' ' + compile_elem(values) \
            + (values[-1].is_a?(Hash) ? "" : ";")) + "\n"
   end
