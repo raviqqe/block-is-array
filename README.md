@@ -34,6 +34,8 @@ http {
 }
 ```
 
+For more complex example, see [examples](examples) directory.
+
 ## License
 
 [The Unlicense](https://unlicense.org)
