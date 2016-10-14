@@ -30,9 +30,9 @@ class Compiler
   def compile_hash_without_brackets hash
     hash.map do |key, values|
       case key
-      when :servers
+      when :server, :load_module
         values.map do |config|
-          compile_hash_item :server, [config]
+          compile_hash_item key, [config]
         end.join()
       else
         compile_hash_item key, values
