@@ -1,5 +1,7 @@
 # nginx-conf.rb
 
+[![Build Status](https://travis-ci.org/raviqqe/nginx-conf.rb.svg?branch=master)](https://travis-ci.org/raviqqe/nginx-conf.rb)
+
 nginx.conf generator in Ruby
 
 ## What is this?
