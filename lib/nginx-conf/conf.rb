@@ -18,4 +18,8 @@ class NginxConf
   def to_s
     Compiler.new.compile(@hash)
   end
+
+  def [] key
+    @hash[key]
+  end
 end
