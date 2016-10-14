@@ -11,7 +11,7 @@ class NginxConf
     @hash[:http][:servers].push(hash)
   end
 
-  def compile
+  def to_s
     Compiler.new.compile(@hash)
   end
 end
