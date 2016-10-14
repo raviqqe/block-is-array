@@ -29,9 +29,21 @@ class Compiler
 
   def compile_hash_without_brackets hash
     hash.map do |key, values|
-      indent(key.to_s + ' ' + compile_elem(values) \
-             + (values[-1].is_a?(Hash) ? "" : ";") + "\n")
+      s = case key
+      when :servers
+        values.map do |config|
+          compile_hash_item :server, [config]
+        end.join()
+      else
+        compile_hash_item key, values
+      end
+
+      indent(s) + "\n"
     end.join()
+  end
+
+  def compile_hash_item key, values
+    key.to_s + ' ' + compile_elem(values) + (values[-1].is_a?(Hash) ? "" : ";")
   end
 
   def indent line
