@@ -1,6 +1,7 @@
 # nginx-conf.rb
 
 [![Build Status](https://travis-ci.org/raviqqe/nginx-conf.rb.svg?branch=master)](https://travis-ci.org/raviqqe/nginx-conf.rb)
+[![License](https://img.shields.io/badge/license-unlicense-lightgray.svg)](https://unlicense.org)
 
 nginx.conf generator in Ruby
 
