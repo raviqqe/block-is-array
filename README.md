@@ -18,8 +18,8 @@ $ gem install nginx-conf
 ```
 irb> require 'nginx-conf'
 irb> c = NginxConf.new(user: :www)
-irb> c.add_server(listen: 80, server_name: 'foo.com')
-irb> c.add_server(listen: [443, :ssl], server_name: 'bar.com')
+irb> c.server(listen: 80, server_name: 'foo.com')
+irb> c.server(listen: [443, :ssl], server_name: 'bar.com')
 irb> puts c
 user www;
 http {
