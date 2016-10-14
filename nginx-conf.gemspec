@@ -12,5 +12,5 @@ Gem::Specification.new do |s|
   s.email       = 'raviqqe@gmail.com'
   s.homepage    = 'https://github.com/raviqqe/nginx-conf.rb'
 
-  s.files       = Dir['lib/**']
+  s.files       = Dir['lib/**/*']
 end
