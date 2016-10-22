@@ -1,6 +1,10 @@
 class Compiler
   @@spaces = ' ' * 4
 
+  def initialize repeats
+    @repeats = repeats
+  end
+
   def compile hash
     @indents = 0
     compile_hash_without_brackets hash
@@ -29,8 +33,7 @@ class Compiler
 
   def compile_hash_without_brackets hash
     hash.map do |key, values|
-      case key
-      when :server, :load_module
+      if @repeats.include? key
         values.map do |config|
           compile_hash_item key, [config]
         end.join()

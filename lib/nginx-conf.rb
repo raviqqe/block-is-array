@@ -1,1 +1,1 @@
-require_relative 'nginx-conf/conf'
+require_relative 'nginx-conf/nginx_conf'

@@ -1,25 +1,39 @@
 require_relative 'compiler'
 
 
-class NginxConf
-  def initialize hash
-    raise if [:http, :load_module].any? { |k| hash.has_key? k }
-    @hash = hash.merge({load_module: [], http: {server: []}})
+
+class Conf
+  def initialize repeats, &block
+    @repeats = repeats
+    @attrs = {}
+    instance_eval(&block)
   end
 
-  def load_module path
-    @hash[:load_module].push(path)
+  def method_missing name, *args, &block
+    if not (args or block)
+      @attrs[name]
+    end
+
+    if block
+      args.push Conf.new(@repeats, &block).to_hash
+    end
+
+    value = args.length == 1 ? args[0] : args
+
+    if @repeats.include? name and @attrs.include? name
+      @attrs[name].push value
+    elsif @repeats.include? name
+      @attrs[name] = [value]
+    else
+      @attrs[name] = value
+    end
   end
 
-  def server hash
-    @hash[:http][:server].push(hash)
+  def to_hash
+    @attrs
   end
 
   def to_s
-    Compiler.new.compile(@hash)
-  end
-
-  def [] key
-    @hash[key]
+    Compiler.new(@repeats).compile(@attrs)
   end
 end

@@ -3,43 +3,48 @@
 require 'nginx-conf'
 
 
-c = NginxConf.new(
-  user: :www,
-  worker_process: 1,
-  events: { worker_connections: 1024 },
-)
+conf = nginx_conf do
+  load_module '/usr/local/libexec/nginx/ngx_mail_module.so'
+  load_module '/usr/local/libexec/nginx/ngx_stream_module.so'
 
-c.load_module '/usr/local/libexec/nginx/ngx_mail_module.so'
-c.load_module '/usr/local/libexec/nginx/ngx_stream_module.so'
+  user :www
+  worker_process 1
+  events do
+    worker_connections 1024
+  end
 
-c[:http][:include] = 'mime.types'
-c[:http][:default_type] = 'application/octet-stream'
+  http do
+    include 'mime.types'
+    default_type 'application/octet-stream'
 
-c[:http][:send_file] = :on
-c[:http][:keepalive_timeout] = 65
+    send_file :on
+    keepalive_timeout 65
 
-c.server(
-  listen: 80,
-  server_name: :localhost,
-  location: ['/', {
-    root: '/usr/local/www/nginx',
-    index: ['index.html', 'index.htm'],
-  }],
-)
+    server do
+      listen 80
+      server_name :localhost
 
-c.server(
-  listen: [443, :ssl],
-  server_name: :localhost,
+      location '/' do
+        root '/usr/local/www/nginx'
+        index 'index.html', 'index.htm'
+      end
+    end
 
-  ssl_certificate: 'cert.pem',
-  ssl_certificate_key: 'cert.key',
-  ssl_session_cache: 'shared:SSL:1m',
-  ssl_session_timeout: '5m',
+    server do
+      listen 443, :ssl
+      server_name :localhost
 
-  location: ['/', {
-    root: 'html',
-    index: ['index.html', 'index.htm'],
-  }],
-)
+      ssl_certificate 'cert.pem'
+      ssl_certificate_key 'cert.key'
+      ssl_session_cache 'shared:SSL:1m'
+      ssl_session_timeout '5m'
 
-puts c
+      location '/' do
+        root 'html'
+        index 'index.html', 'index.htm'
+      end
+    end
+  end
+end
+
+puts conf
