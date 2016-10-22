@@ -9,7 +9,4 @@ addons:
       - rubygems
 
 script:
-  - gem build *.gemspec
-  - sudo gem install *.gem
-  - ruby examples/complex.rb > nginx.conf
-  - sudo nginx -c nginx.conf
+  - rake test
