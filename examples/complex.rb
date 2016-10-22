@@ -4,11 +4,8 @@ require 'nginx-conf'
 
 
 conf = nginx_conf do
-  load_module '/usr/local/libexec/nginx/ngx_mail_module.so'
-  load_module '/usr/local/libexec/nginx/ngx_stream_module.so'
-
-  user :www
-  worker_process 1
+  user :nobody, :nogroup
+  worker_processes 1
   events do
     worker_connections 1024
   end
@@ -17,7 +14,7 @@ conf = nginx_conf do
     include 'mime.types'
     default_type 'application/octet-stream'
 
-    send_file :on
+    sendfile :on
     keepalive_timeout 65
 
     server do
@@ -35,7 +32,7 @@ conf = nginx_conf do
       server_name :localhost
 
       ssl_certificate 'cert.pem'
-      ssl_certificate_key 'cert.key'
+      ssl_certificate_key 'key.pem'
       ssl_session_cache 'shared:SSL:1m'
       ssl_session_timeout '5m'
 
