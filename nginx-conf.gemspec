@@ -5,8 +5,7 @@ Gem::Specification.new do |s|
   s.license     = 'Unlicense'
 
   s.summary     = 'nginx.conf generator'
-  s.description = 'nginx.conf generator which tries to exploit ' \
-                  'expressiveness of built-in types'
+  s.description = 'nginx.conf generator with pretty DSL'
 
   s.authors     = ['Yota Toyama']
   s.email       = 'raviqqe@gmail.com'
