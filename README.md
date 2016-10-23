@@ -1,24 +1,22 @@
-# nginx-conf.rb
+# block-is-hash
 
-[![Build Status](https://travis-ci.org/raviqqe/nginx-conf.rb.svg?branch=master)](https://travis-ci.org/raviqqe/nginx-conf.rb)
+[![Build Status](https://travis-ci.org/raviqqe/block-is-hash.svg?branch=master)](https://travis-ci.org/raviqqe/block-is-hash)
 [![License](https://img.shields.io/badge/license-unlicense-lightgray.svg)](https://unlicense.org)
 
-nginx.conf generator in Ruby
+Block is Hash
 
 ## Installation
 
 ```
-$ gem install nginx-conf
+$ gem install block-is-hash
 ```
 
 ## Usage
 
-Code:
-
 ```
-require 'nginx-conf'
+require 'block-is-hash'
 
-c = nginx_conf do
+hash = block_is_hash %i(server) do
   user :www
 
   http do
@@ -34,26 +32,10 @@ c = nginx_conf do
   end
 end
 
-puts c
+p hash
 ```
 
-Output:
-
-```
-user www;
-http {
-    server {
-        listen 80;
-        server_name foo.com;
-    }
-    server {
-        listen 443 ssl;
-        server_name bar.com;
-    }
-}
-```
-
-For more complex example, see [examples](examples) directory.
+For more examples, see [examples](examples) directory.
 
 ## License
 
