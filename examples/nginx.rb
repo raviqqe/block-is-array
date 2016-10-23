@@ -4,7 +4,7 @@ require 'block-is-array'
 
 
 
-conf = block_is_array %i(server load_module) do
+conf = block_is_array do
   user :nobody, :nogroup
   worker_processes 1
   events do
