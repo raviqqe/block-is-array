@@ -1,3 +1,7 @@
+require 'rake/clean'
+
+
+
 TMP_DIR = 'tmp'
 
 
@@ -26,3 +30,6 @@ task :test => :install do
 end
 
 task :default => :build
+
+
+CLEAN.include Dir.glob ['*.gem', 'tmp']
