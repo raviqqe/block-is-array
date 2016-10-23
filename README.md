@@ -15,7 +15,7 @@ $ gem install block-is-array
 
 Code:
 
-```
+```ruby
 require 'block-is-array'
 
 array = block_is_array do
