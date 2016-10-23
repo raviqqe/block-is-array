@@ -20,6 +20,8 @@ class BlockIsHash
       @hash[name].push value
     elsif @repeats.include? name
       @hash[name] = [value]
+    elsif @hash.include? name
+      raise "#{name} entry is declared twice."
     else
       @hash[name] = value
     end
