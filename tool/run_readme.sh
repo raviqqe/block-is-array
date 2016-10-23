@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cat $1 | sed -z 's/.*```\([^`]*\)```.*/\1/' | ruby
+cat $1 | sed -z 's/.*```.*\(require[^`]*\)```.*/\1/' | ruby
