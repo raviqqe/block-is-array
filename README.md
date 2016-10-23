@@ -39,7 +39,7 @@ p array
 
 Output:
 
-```
+```ruby
 [[:user, :www], [:http, [[:server, [[:listen, 80], [:server_name, "foo.com"]]], [:server, [[:listen, 443, :ssl], [:server_name, "bar.com"]]]]]]
 ```
 
