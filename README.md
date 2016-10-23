@@ -5,11 +5,6 @@
 
 nginx.conf generator in Ruby
 
-## What is this?
-
-The nginx.conf generator exploiting expressiveness of Ruby's built-in types.
-As some entries can be repeated (e.g. server), they are treated specially.
-
 ## Installation
 
 ```
@@ -18,12 +13,33 @@ $ gem install nginx-conf
 
 ## Usage
 
+Code:
+
 ```
-irb> require 'nginx-conf'
-irb> c = NginxConf.new(user: :www)
-irb> c.server(listen: 80, server_name: 'foo.com')
-irb> c.server(listen: [443, :ssl], server_name: 'bar.com')
-irb> puts c
+require 'nginx-conf'
+
+c = nginx_conf do
+  user :www
+
+  http do
+    server do
+      listen 80
+      server_name 'foo.com'
+    end
+
+    server do
+      listen 443, :ssl
+      server_name 'bar.com'
+    end
+  end
+end
+
+puts c
+```
+
+Output:
+
+```
 user www;
 http {
     server {
