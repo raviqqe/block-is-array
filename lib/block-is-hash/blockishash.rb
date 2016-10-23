@@ -6,10 +6,6 @@ class BlockIsHash
   end
 
   def method_missing name, *args, &block
-    if not (args or block)
-      @hash[name]
-    end
-
     if block
       args.push BlockIsHash.new(@repeats, &block).to_hash
     end
