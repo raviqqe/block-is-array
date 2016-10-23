@@ -17,12 +17,8 @@ end
 task :test => :install do
   sh 'tool/run_readme.sh README.md'
 
-  Dir.glob(['examples/*.rb', 'test/*.rb']).each do |file|
+  Dir.glob('examples/*.rb').each do |file|
     ruby file
-  end
-
-  Dir.glob('test/xfail/*.rb').each do |file|
-    sh %Q(! ruby #{file})
   end
 end
 
