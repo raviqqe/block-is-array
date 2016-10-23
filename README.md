@@ -13,6 +13,8 @@ $ gem install block-is-array
 
 ## Usage
 
+Code:
+
 ```
 require 'block-is-array'
 
@@ -33,6 +35,12 @@ array = block_is_array do
 end
 
 p array
+```
+
+Output:
+
+```
+[[:user, :www], [:http, [[:server, [[:listen, 80], [:server_name, "foo.com"]]], [:server, [[:listen, 443, :ssl], [:server_name, "bar.com"]]]]]]
 ```
 
 For more examples, see [examples](examples) directory.
