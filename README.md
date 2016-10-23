@@ -1,22 +1,22 @@
-# block-is-hash
+# block-is-array
 
-[![Build Status](https://travis-ci.org/raviqqe/block-is-hash.svg?branch=master)](https://travis-ci.org/raviqqe/block-is-hash)
+[![Build Status](https://travis-ci.org/raviqqe/block-is-array.svg?branch=master)](https://travis-ci.org/raviqqe/block-is-array)
 [![License](https://img.shields.io/badge/license-unlicense-lightgray.svg)](https://unlicense.org)
 
-Block is Hash
+Block is Array
 
 ## Installation
 
 ```
-$ gem install block-is-hash
+$ gem install block-is-array
 ```
 
 ## Usage
 
 ```
-require 'block-is-hash'
+require 'block-is-array'
 
-hash = block_is_hash %i(server) do
+array = block_is_array %i(server) do
   user :www
 
   http do
@@ -32,7 +32,7 @@ hash = block_is_hash %i(server) do
   end
 end
 
-p hash
+p array
 ```
 
 For more examples, see [examples](examples) directory.

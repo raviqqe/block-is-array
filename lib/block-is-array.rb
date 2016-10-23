@@ -1,1 +1,1 @@
-require_relative 'block-is-hash/function'
+require_relative 'block-is-array/function'

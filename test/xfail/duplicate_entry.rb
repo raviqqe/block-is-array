@@ -1,6 +1,6 @@
-require 'block-is-hash'
+require 'block-is-array'
 
-block_is_hash [] do
+block_is_array [] do
   foo 123
   foo 123
 end

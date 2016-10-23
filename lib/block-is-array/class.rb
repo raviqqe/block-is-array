@@ -1,29 +1,29 @@
-class BlockIsHash
+class BlockIsArray
   def initialize repeats, &block
     @repeats = repeats
-    @hash = {}
+    @array = {}
     instance_eval(&block)
   end
 
   def method_missing name, *args, &block
     if block
-      args.push BlockIsHash.new(@repeats, &block).to_hash
+      args.push BlockIsArray.new(@repeats, &block).to_array
     end
 
     value = args.length == 1 ? args[0] : args
 
-    if @repeats.include? name and @hash.include? name
-      @hash[name].push value
+    if @repeats.include? name and @array.include? name
+      @array[name].push value
     elsif @repeats.include? name
-      @hash[name] = [value]
-    elsif @hash.include? name
+      @array[name] = [value]
+    elsif @array.include? name
       raise "#{name} entry is declared twice."
     else
-      @hash[name] = value
+      @array[name] = value
     end
   end
 
-  def to_hash
-    @hash
+  def to_array
+    @array
   end
 end
