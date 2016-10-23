@@ -1,4 +1,4 @@
-require_relative 'blockishash'
+require_relative 'class'
 
 
 
