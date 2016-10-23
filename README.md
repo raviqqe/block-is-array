@@ -16,7 +16,7 @@ $ gem install block-is-array
 ```
 require 'block-is-array'
 
-array = block_is_array %i(server) do
+array = block_is_array do
   user :www
 
   http do
